@@ -1,23 +1,29 @@
 # main.py
 
-from db.create_db import DatabaseManager
 from gui.gui_functions import GUIFunctions
+from db.create_db import DatabaseManager
 from app_functions import AppFunctions
 
 
 class MainApp:
+    """Main application class."""
+
     def __init__(self):
-        self.db_manager = DatabaseManager()
+        """Initialize the main application."""
+        self.database = DatabaseManager()
         self.app_functions = AppFunctions()
         self.gui_functions = GUIFunctions()
 
-    def menu_item_callback(self, menu_item):
-        menu_action = self.app_functions.actions.get(menu_item)
-        if menu_action:
-            menu_action()
-
     def run(self):
-        self.gui_functions.setup_gui(self.app_functions.actions, self.menu_item_callback)
+        """Run the main application."""
+        self.gui_functions.setup_gui(
+            self.app_functions.actions,
+            self.menu_item_callback
+        )
+
+    def menu_item_callback(self):
+        """Callback function for menu items."""
+        print("Menu item callback executed")
 
 
 if __name__ == "__main__":

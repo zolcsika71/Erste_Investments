@@ -3,7 +3,7 @@
   <component name="Black">
     <option name="enabledOnReformat" value="true" />
     <option name="pathToExecutable" value="/opt/anaconda3/bin/black" />
-    <option name="sdkName" value="Poetry (Erste_investments)" />
+    <option name="sdkName" value="Poetry (Erste_investments) (7)" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (Erste_investments) (7)" project-jdk-type="Python SDK" />
   <component name="PyPackaging">

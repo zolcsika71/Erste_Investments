@@ -12,39 +12,38 @@ class GUI(QMainWindow):
         self.gui_functions = gui_functions
         print("Main menu created")
 
-        self.actions_map = {
-            "import_suggested_portfolio": self.import_suggested_portfolio,
-            "show_current_portfolio": self.show_current_portfolio,
-            "sell_buy_on_current_portfolio": self.sell_buy_on_current_portfolio,
-            "show_suggested_portfolio": self.show_suggested_portfolio,
-            "delete_and_recreate_db": self.delete_recreate_db,
-            "import_current_portfolio": self.import_current_portfolio,
-            "exit": self.confirm_exit,
-        }
-
+        self.actions_map = self.create_actions_map()
         self.gui_functions.setup_window(self)
         self.menu_bar = self.gui_functions.create_menus(self, menu_structure, self.actions_map)
         self.setMenuBar(self.menu_bar)
         set_styling(self)
+        self.generate_action_methods()
 
-    def import_suggested_portfolio(self):
-        self.gui_functions.notify_click('import_suggested_portfolio', self.actions['import_suggested_portfolio'])
+    def create_actions_map(self):
+        actions_map = {}
+        for item in menu_structure:
+            if item["submenus"]:
+                for submenu in item["submenus"]:
+                    actions_map[submenu["action"]] = self.create_action_method(submenu["action"])
+            else:
+                actions_map[item["action"]] = self.create_action_method(item["action"])
 
-    def show_current_portfolio(self):
-        self.gui_functions.notify_click('show_current_portfolio', self.actions['show_current_portfolio'])
+        # Ensure "exit" action is included
+        actions_map["exit"] = self.confirm_exit
+        return actions_map
 
-    def sell_buy_on_current_portfolio(self):
-        self.gui_functions.notify_click('sell_buy_on_current_portfolio', self.actions['sell_buy_on_current_portfolio'])
+    def generate_action_methods(self):
+        for action in self.actions_map.keys():
+            if not hasattr(self, action):
+                setattr(self, action, self.actions_map[action])
 
-    def show_suggested_portfolio(self):
-        self.gui_functions.notify_click('show_suggested_portfolio', self.actions['show_suggested_portfolio'])
+    def create_action_method(self, action_name):
+        def action_method():
+            self.gui_functions.notify_click(action_name, self.actions[action_name])
 
-    def delete_recreate_db(self):
-        self.gui_functions.notify_click('delete_recreate_db', self.actions['delete_recreate_db'])
+        return action_method
 
-    def import_current_portfolio(self):
-        self.gui_functions.notify_click('import_current_portfolio', self.actions['import_current_portfolio'])
-
+    # Static exit function
     def confirm_exit(self):
         print("Exit menu item clicked")
         reply = QMessageBox.question(
@@ -53,3 +52,5 @@ class GUI(QMainWindow):
         )
         if reply == QMessageBox.Yes:
             QApplication.quit()
+
+# No need to instantiate or generate methods here

@@ -1,49 +1,48 @@
-# menu_config.py
+# gui/menu_config.py
 
-menu_structure = [
-    {
-        "name": "Import Suggested Portfolio",
-        "action": "import_suggested_portfolio",
-        "method_name": "import_suggested_portfolio",
-        "menu": None,
-    },
-    {
-        "name": "Display",
-        "submenus": [
-            {
-                "name": "Show Current Portfolio",
-                "action": "show_current_portfolio",
-                "method_name": "show_current_portfolio",
-            },
-            {
-                "name": "Sell and Buy on Current Portfolio",
-                "action": "sell_buy_on_current_portfolio",
-                "method_name": "sell_buy_on_current_portfolio",
-            },
-            {
-                "name": "Show Suggested Portfolio",
-                "action": "show_suggested_portfolio",
-                "method_name": "show_suggested_portfolio",
-            },
-        ],
-    },
-    {
-        "name": "Service",
-        "submenus": [
-            {
-                "name": "Delete and Recreate DB",
-                "action": "delete_and_recreate_db",
-                "method_name": "delete_recreate_db",
-            },
-            {
-                "name": "Import Current Portfolio",
-                "action": "import_current_portfolio",
-                "method_name": "import_current_portfolio",
-            },
-        ],
-    },
-    {"name": "Exit",
-     "action": "exit",
-     "method_name": "confirm_exit",
-     "menu": None},
-]
+from .menu_constants import menu as menu_constants
+
+
+def convert_to_function(name):
+    """Convert a name to its corresponding action."""
+    return name.lower().replace(" ", "_")
+
+
+def generate_menu_structure(menu_data):
+    menu_structure = []
+    for main_key, main_value in menu_data.items():
+        main_menu_item = {
+            "name": main_value["name"],
+            "action": convert_to_function(main_value["name"]),
+            "submenus": []
+        }
+        if main_value["submenus"]:
+            submenus = []
+            for sub_key, sub_value in main_value["submenus"].items():
+                submenu_item = {
+                    "name": sub_value,
+                    "action": convert_to_function(sub_value)
+                }
+                submenus.append(submenu_item)
+            main_menu_item["submenus"] = submenus
+        else:
+            main_menu_item["submenus"] = None
+        menu_structure.append(main_menu_item)
+
+    # Ensure Exit menu item is included
+    exit_menu_item = {
+        "name": "Exit",
+        "action": "exit",
+        "submenus": None
+    }
+    menu_structure.append(exit_menu_item)
+
+    return menu_structure
+
+
+menu_structure = generate_menu_structure(menu_constants)
+
+
+
+
+

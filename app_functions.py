@@ -1,34 +1,36 @@
-# gui/app_functions.py
+# app_functions.py
+
+from gui.menu_config import menu_structure
+
 
 class AppFunctions:
     def __init__(self):
-        self.actions = {
-            "import_suggested_portfolio": self.import_suggested_portfolio,
-            "show_current_portfolio": self.show_current_portfolio,
-            "sell_buy_on_current_portfolio": self.sell_buy_on_current_portfolio,
-            "show_suggested_portfolio": self.show_suggested_portfolio,
-            "delete_recreate_db": self.delete_recreate_db,
-            "import_current_portfolio": self.import_current_portfolio,
-        }
+        self.actions = self.create_actions()
 
-    def import_suggested_portfolio(self):
-        self._log_action("Import ERSTE market portfolio is running")
+    def create_actions(self):
+        actions = {}
+        for item in menu_structure:
+            if item["submenus"]:
+                for submenu in item["submenus"]:
+                    action_name = submenu["action"]
+                    actions[action_name] = self.create_action_method(action_name)
+            else:
+                if item["action"] != "exit":
+                    action_name = item["action"]
+                    actions[action_name] = self.create_action_method(action_name)
+        return actions
 
-    def show_current_portfolio(self):
-        self._log_action("Show current portfolio is running")
+    def create_action_method(self, action_name):
+        def action_method():
+            self._log_action(f"{action_name.replace('_', ' ').title()} is running")
 
-    def sell_buy_on_current_portfolio(self):
-        self._log_action("Show Sell & Buy is running")
-
-    def show_suggested_portfolio(self):
-        self._log_action("Suggested Portfolio is running")
-
-    def delete_recreate_db(self):
-        self._log_action("Delete and Recreate DB is running")
-
-    def import_current_portfolio(self):
-        self._log_action("Import Current Portfolio is running")
+        return action_method
 
     def _log_action(self, message):
         print(message)
 
+    # Explicitly defined methods (if any)
+    def confirm_exit(self):
+        print("Exit action executed")
+
+# No need to instantiate or generate methods here
