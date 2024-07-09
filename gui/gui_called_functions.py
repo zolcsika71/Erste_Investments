@@ -1,4 +1,4 @@
-class DBModifier:
+class GUIFunctions:
     def __init__(self):
         self.actions = {
             'import_suggested_portfolio': self.import_suggested_portfolio,

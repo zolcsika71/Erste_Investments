@@ -1,15 +1,16 @@
 # imports
 
 from db_scripts.create_db import DatabaseManager
-from gui.gui import setup_gui, GUI, notify_click
-from db_scripts.modify_db import DBModifier
+from gui.create_gui_functions import MenuHelper
+from gui.gui_called_functions import GUIFunctions
 
 if __name__ == '__main__':
     db_manager = DatabaseManager()
-    db_modifier = DBModifier()
+    db_modifier = GUIFunctions()
+    menu_helper = MenuHelper()
 
     # Setup GUI with actions
-    setup_gui(db_modifier.actions)
+    menu_helper.setup_gui(db_modifier.actions)
 
     gui_handler = GUI(db_modifier.actions)
 
@@ -21,7 +22,7 @@ if __name__ == '__main__':
 
     # Example usage with callback:
     for action in db_modifier.actions:
-        notify_click(action, menu_item_callback)
+        menu_helper.notify_click(action, menu_item_callback)
 
 
 
