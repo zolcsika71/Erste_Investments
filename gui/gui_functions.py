@@ -1,19 +1,16 @@
-# gui_functions.py
+# gui/gui_functions.py
 
 import sys
-
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QAction, QApplication
+from .gui import GUI
 
-from gui.gui import GUI
 
-
-class MenuHelper:
+class GUIFunctions:
     def __init__(self):
         pass
 
     def create_action(self, widget, name, function):
-        """Create an action and connect it to a function."""
         action = QAction(name, widget)
         if function is not None:
             action.triggered.connect(function)
@@ -22,7 +19,6 @@ class MenuHelper:
         return action
 
     def create_menus(self, widget, menu_structure, actions_map):
-        """Create menus and submenus dynamically."""
         menu_bar = widget.menuBar()
         for item in menu_structure:
             if 'submenus' in item:
@@ -37,23 +33,20 @@ class MenuHelper:
                 menu_bar.addAction(action)
         return menu_bar
 
-    def setup_gui(self, actions):
-        """Run the application."""
+    def setup_gui(self, actions, callback):
         QApplication.setAttribute(Qt.AA_DontUseNativeMenuBar)
         application = QApplication(sys.argv)
         application.setStyle("FUSION")
-        app_window = GUI(actions)
+        app_window = GUI(actions, self)
         app_window.show()
         sys.exit(application.exec_())
 
     def notify_click(self, menu_item, callback=None):
-        """Notify main.py about the menu item clicked."""
         print(f"{menu_item} menu item clicked")
         if callback:
             callback()
         return menu_item
 
     def setup_window(self, widget):
-        """Set up the main window."""
         widget.setWindowTitle("Investment Tracker")
         widget.setGeometry(100, 100, 800, 600)

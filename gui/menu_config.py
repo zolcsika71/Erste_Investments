@@ -42,5 +42,8 @@ menu_structure = [
             },
         ],
     },
-    {"name": "Exit", "action": "exit", "method_name": "confirm_exit", "menu": None},
+    {"name": "Exit",
+     "action": "exit",
+     "method_name": "confirm_exit",
+     "menu": None},
 ]

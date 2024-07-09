@@ -1,4 +1,6 @@
-class GUIFunctions:
+# gui/app_functions.py
+
+class AppFunctions:
     def __init__(self):
         self.actions = {
             "import_suggested_portfolio": self.import_suggested_portfolio,
@@ -29,3 +31,4 @@ class GUIFunctions:
 
     def _log_action(self, message):
         print(message)
+
