@@ -1,11 +1,11 @@
-# create_gui_functions.py
+# gui_functions.py
 
-# create_gui_functions.py
-
-from PyQt5.QtWidgets import QAction, QApplication
-from PyQt5.QtCore import Qt
-from gui.gui import GUI
 import sys
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QAction, QApplication
+
+from gui.gui import GUI
 
 
 class MenuHelper:

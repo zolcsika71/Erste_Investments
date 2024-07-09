@@ -1,8 +1,10 @@
 # styling.py
 
+
 def set_styling(widget):
     """Set the styling for the application."""
-    widget.setStyleSheet("""
+    widget.setStyleSheet(
+        """
         QMainWindow {
             --background-color: #f7f7f7;
             --text-color: #333333;
@@ -57,4 +59,5 @@ def set_styling(widget):
         QPushButton:pressed {
             background-color: var(--pressed-background-color);
         }
-    """)
+    """
+    )

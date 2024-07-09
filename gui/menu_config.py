@@ -5,7 +5,7 @@ menu_structure = [
         "name": "Import Suggested Portfolio",
         "action": "import_suggested_portfolio",
         "method_name": "import_suggested_portfolio",
-        "menu": None
+        "menu": None,
     },
     {
         "name": "Display",
@@ -13,19 +13,19 @@ menu_structure = [
             {
                 "name": "Show Current Portfolio",
                 "action": "show_current_portfolio",
-                "method_name": "show_current_portfolio"
+                "method_name": "show_current_portfolio",
             },
             {
-                "name": "Sell & Buy on Current Portfolio",
+                "name": "Sell and Buy on Current Portfolio",
                 "action": "sell_buy_on_current_portfolio",
-                "method_name": "show_sell_buy"
+                "method_name": "sell_buy_on_current_portfolio",
             },
             {
                 "name": "Show Suggested Portfolio",
                 "action": "show_suggested_portfolio",
-                "method_name": "show_suggested_portfolio"
-            }
-        ]
+                "method_name": "show_suggested_portfolio",
+            },
+        ],
     },
     {
         "name": "Service",
@@ -33,19 +33,14 @@ menu_structure = [
             {
                 "name": "Delete and Recreate DB",
                 "action": "delete_and_recreate_db",
-                "method_name": "delete_recreate_db"
+                "method_name": "delete_recreate_db",
             },
             {
                 "name": "Import Current Portfolio",
                 "action": "import_current_portfolio",
-                "method_name": "import_current_portfolio"
-            }
-        ]
+                "method_name": "import_current_portfolio",
+            },
+        ],
     },
-    {
-        "name": "Exit",
-        "action": "exit",
-        "method_name": "confirm_exit",
-        "menu": None
-    }
+    {"name": "Exit", "action": "exit", "method_name": "confirm_exit", "menu": None},
 ]

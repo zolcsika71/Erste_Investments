@@ -1,10 +1,10 @@
 # imports
 
 from db_scripts.create_db import DatabaseManager
-from gui.create_gui_functions import MenuHelper
+from gui.gui_functions import MenuHelper
 from gui.gui_called_functions import GUIFunctions
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     db_manager = DatabaseManager()
     db_modifier = GUIFunctions()
     menu_helper = MenuHelper()
@@ -23,7 +23,3 @@ if __name__ == '__main__':
     # Example usage with callback:
     for action in db_modifier.actions:
         menu_helper.notify_click(action, menu_item_callback)
-
-
-
-

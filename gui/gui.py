@@ -1,13 +1,14 @@
 # gui.py
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
+
 from .menu_config import menu_structure
 from .styling import set_styling
 
 
 class GUI(QMainWindow):
     def __init__(self, actions):
-        from .create_gui_functions import MenuHelper
+        from .gui_functions import MenuHelper
 
         super().__init__()
         self.actions = actions
@@ -16,7 +17,7 @@ class GUI(QMainWindow):
         self.actions_map = {
             "import_suggested_portfolio": self.import_suggested_portfolio,
             "show_current_portfolio": self.show_current_portfolio,
-            "sell_buy_on_current_portfolio": self.show_sell_buy,
+            "sell_buy_on_current_portfolio": self.sell_buy_on_current_portfolio,
             "show_suggested_portfolio": self.show_suggested_portfolio,
             "delete_and_recreate_db": self.delete_recreate_db,
             "import_current_portfolio": self.import_current_portfolio,
@@ -37,7 +38,7 @@ class GUI(QMainWindow):
         """Handle the show current portfolio action."""
         self.menu_helper.notify_click('show_current_portfolio', self.actions['show_current_portfolio'])
 
-    def show_sell_buy(self):
+    def sell_buy_on_current_portfolio(self):
         """Handle the show sell & buy action."""
         self.menu_helper.notify_click('sell_buy_on_current_portfolio', self.actions['sell_buy_on_current_portfolio'])
 

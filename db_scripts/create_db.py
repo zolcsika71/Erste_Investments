@@ -1,5 +1,5 @@
-import sqlite3
 import os
+import sqlite3
 
 
 class DatabaseManager:
@@ -8,9 +8,11 @@ class DatabaseManager:
         Initialize the DatabaseManager class.
         Sets up the project directory and database folder, and checks if the database exists.
         """
-        self.project_dir = os.path.dirname(os.path.abspath(os.path.join(__file__, '..', '..', 'main.py')))
-        self.db_folder = os.path.join(self.project_dir, 'db')
-        self.db_path = os.path.join(self.db_folder, 'investments.db')
+        self.project_dir = os.path.dirname(
+            os.path.abspath(os.path.join(__file__, "..", "..", "main.py"))
+        )
+        self.db_folder = os.path.join(self.project_dir, "db")
+        self.db_path = os.path.join(self.db_folder, "investments.db")
         self.db_exists = os.path.exists(self.db_path)
         self.check_db_exists()
 
