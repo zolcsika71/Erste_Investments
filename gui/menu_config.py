@@ -41,8 +41,3 @@ def generate_menu_structure(menu_data):
 
 
 menu_structure = generate_menu_structure(menu_constants)
-
-
-
-
-
