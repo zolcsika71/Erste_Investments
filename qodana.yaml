@@ -1,20 +1,24 @@
+#-------------------------------------------------------------------------------#
+#               Qodana analysis is configured by qodana.yaml file               #
+#             https://www.jetbrains.com/help/qodana/qodana-yaml.html            #
+#-------------------------------------------------------------------------------#
 version: "1.0"
-inspections:
-  - id: "Python"
-    enabled: true
-  - id: "PEP8CodingStyleViolation"
-    enabled: true
-  - id: "PEP8NamingConventionViolation"
-    enabled: true
-  - id: "PEP8StatementsViolation"
-    enabled: true
-  - id: "PEP8ImportsViolation"
-    enabled: true
-  - id: "PEP8CommentsViolation"
-    enabled: true
-  - id: "PEP8WhitespaceViolation"
-    enabled: true
-  - id: "PEP8RuntimeViolation"
-    enabled: true
-  - id: "PEP8RuntimeViolation"
+#Specify inspection profile for code analysis
+profile:
+  name: qodana.recommended
+#Enable inspections
+#include:
+#  - name: <SomeEnabledInspectionId>
+#Disable inspections
+#exclude:
+#  - name: <SomeDisabledInspectionId>
+#    paths:
+#      - <path/where/not/run/inspection>
+#Execute shell command before Qodana execution (Applied in CI/CD pipeline)
+#bootstrap: sh ./prepare-qodana.sh
+#Install IDE plugins before Qodana execution (Applied in CI/CD pipeline)
+#plugins:
+#  - id: <plugin.id> #(plugin id can be found at https://plugins.jetbrains.com)
+#Specify Qodana linter for analysis (Applied in CI/CD pipeline)
+linter: jetbrains/qodana-python:2024.1
 
