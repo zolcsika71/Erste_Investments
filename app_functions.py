@@ -1,12 +1,5 @@
 # app_functions.py
 
-import sys
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication
-from gui.gui import GUI
-from gui.common_functions import CommonGUIFunctions
-
-
 def generate_actions(menu_structure):
     actions = {}
 
