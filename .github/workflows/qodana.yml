@@ -1,4 +1,6 @@
 name: Code coverage fresh code
+version: 1.0
+
 
 on:
   workflow_dispatch:
@@ -42,5 +44,5 @@ jobs:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_JS }}
         with:
           pr-mode: true # Enable the pull-request mode
-version: 1.0
+
 
