@@ -1,3 +1,4 @@
+#file: noinspection SpellCheckingInspection
 # .github/workflows/ci.yml
 name: CI
 
@@ -28,7 +29,8 @@ jobs:
     - name: Install dependencies
       run: poetry install
 
-    - name: Set PYTHONPATH
+    - # noinspection SpellCheckingInspection
+      name: Set PYTHONPATH
       run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
     - name: Run tests
