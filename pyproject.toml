@@ -10,6 +10,7 @@ python = "^3.12"
 PyQt5 = "^5.15"
 coverage = "^7.6.0"
 pytest = "^8.2.2"
+pytest-qt = "^4.0.2"  # Add pytest-qt for PyQt testing
 black = "^24.4.2"
 
 [tool.coverage.run]
