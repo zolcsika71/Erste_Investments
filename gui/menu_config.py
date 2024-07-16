@@ -9,7 +9,7 @@ def convert_to_function(name):
 
 
 def generate_menu_structure(menu_data):
-    menu_structure = []
+    menu_mapping = []
     for main_key, main_value in menu_data.items():
         main_menu_item = {
             "name": main_value["name"],
@@ -27,7 +27,7 @@ def generate_menu_structure(menu_data):
             main_menu_item["submenus"] = submenus
         else:
             main_menu_item["submenus"] = None
-        menu_structure.append(main_menu_item)
+        menu_mapping.append(main_menu_item)
 
     # Ensure Exit menu item is included
     exit_menu_item = {
@@ -35,9 +35,9 @@ def generate_menu_structure(menu_data):
         "action": "exit",
         "submenus": None
     }
-    menu_structure.append(exit_menu_item)
+    menu_mapping.append(exit_menu_item)
 
-    return menu_structure
+    return menu_mapping
 
 
 menu_structure = generate_menu_structure(menu_constants)
