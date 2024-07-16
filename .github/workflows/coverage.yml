@@ -1,0 +1,41 @@
+name: Test Coverage
+
+on: [push, pull_request]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12.0'
+
+    - name: Install dependencies
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        poetry install
+
+    - name: Run tests with coverage
+      run: |
+        poetry run coverage run -m pytest
+        poetry run coverage report
+        poetry run coverage xml
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: coverage.xml
+
+    - name: Upload to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        file: coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: true
