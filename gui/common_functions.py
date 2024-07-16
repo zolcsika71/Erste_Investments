@@ -3,12 +3,14 @@
 from PyQt5.QtWidgets import QAction, QApplication, QMessageBox
 
 
+# noinspection PyUnresolvedReferences
 class CommonGUIFunctions:
     def __init__(self, actions):
         self.actions = actions
         self.parent = None
 
-    def create_action(self, widget, name, function):
+    @staticmethod
+    def create_action(widget, name, function):
         action = QAction(name, widget)
         if function is not None:
             action.triggered.connect(function)
@@ -36,7 +38,8 @@ class CommonGUIFunctions:
 
         return action_method
 
-    def generate_action_methods(self, actions_map, obj):
+    @staticmethod
+    def generate_action_methods(actions_map, obj):
         for action in actions_map.keys():
             if not hasattr(obj, action):
                 setattr(obj, action, actions_map[action])
@@ -56,17 +59,20 @@ class CommonGUIFunctions:
                 menu_bar.addAction(action)
         return menu_bar
 
-    def notify_click(self, menu_item, callback=None):
+    @staticmethod
+    def notify_click(menu_item, callback=None):
         print(f"{menu_item} menu item clicked")
         if callback:
             callback()
         return menu_item
 
-    def setup_window(self, widget):
+    @staticmethod
+    def setup_window(widget):
         widget.setWindowTitle("Investment Tracker")
         widget.setGeometry(100, 100, 800, 600)
 
-    def confirm_exit(self, parent):
+    @staticmethod
+    def confirm_exit(parent):
         print("Exit menu item clicked")
         reply = QMessageBox.question(
             parent, 'Exit', 'Are you sure you want to exit?',

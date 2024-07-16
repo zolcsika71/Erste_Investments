@@ -11,7 +11,7 @@ class GUIFunctions(CommonGUIFunctions):
     def __init__(self, actions):
         super().__init__(actions)
 
-    def setup_gui(self, actions, callback):
+    def setup_gui(self, actions):
         QApplication.setAttribute(Qt.AA_DontUseNativeMenuBar)
         application = QApplication(sys.argv)
         application.setStyle("FUSION")
