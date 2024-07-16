@@ -14,4 +14,3 @@ class TestCommonGUIFunctions:
         # Example test case
         action = self.gui_functions.create_action(None, "Test Action", None)
         assert action.text() == "Test Action"
-
