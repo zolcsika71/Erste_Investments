@@ -41,7 +41,7 @@ jobs:
       - name: Qodana Scan
         uses: JetBrains/qodana-action@main
         env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_JS }}
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
         with:
           pr-mode: true # Enable the pull-request mode
 
