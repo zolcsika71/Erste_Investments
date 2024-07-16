@@ -1,4 +1,4 @@
-# tests/test_commonGUIFunctions.py
+# tests/test_common_functions.py
 
 import pytest
 from gui.common_functions import CommonGUIFunctions
