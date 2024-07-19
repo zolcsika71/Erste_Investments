@@ -1,13 +1,5 @@
 version: "1.0"
 
+linter: jetbrains/qodana-python-community:2024.1
 profile:
   name: qodana.recommended
-extends:
-  name: jetbrains/python-common
-reports:
-  - type: coverage
-    path: tests/coverage.xml
-
-
-
-
