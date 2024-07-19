@@ -4,6 +4,9 @@ profile:
   name: qodana.recommended
 extends:
   name: jetbrains/python-common
+reports:
+  - type: coverage
+    path: .coverage
 
 
 
