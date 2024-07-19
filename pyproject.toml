@@ -13,6 +13,9 @@ pytest = "^8.2.2"
 pytest-qt = "^4.0.2"  # Add pytest-qt for PyQt testing
 black = "^24.4.2"
 
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^5.0.0"
+
 [tool.coverage.run]
 source = ["Erste_investments"]
 branch = true
