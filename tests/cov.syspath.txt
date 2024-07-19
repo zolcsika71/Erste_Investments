@@ -1,0 +1,8 @@
+/
+/Applications/PyCharm.app/Contents/plugins/python/helpers/coverage_runner
+/Applications/PyCharm.app/Contents/plugins/python/helpers/coverage_runner
+/Applications/PyCharm.app/Contents/plugins/python/helpers/coveragepy_new
+/Users/zoltanka/.pyenv/versions/3.12.0/lib/python312.zip
+/Users/zoltanka/.pyenv/versions/3.12.0/lib/python3.12
+/Users/zoltanka/.pyenv/versions/3.12.0/lib/python3.12/lib-dynload
+/Users/zoltanka/Library/Caches/pypoetry/virtualenvs/erste-investments-aVpzjBQm-py3.12/lib/python3.12/site-packages
