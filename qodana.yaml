@@ -6,7 +6,7 @@ extends:
   name: jetbrains/python-common
 reports:
   - type: coverage
-    path: .coverage
+    path: tests/coverage.xml
 
 
 
