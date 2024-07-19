@@ -1,5 +1,7 @@
 # tests/test_common_functions.py
 
+import pytest
+from gui.common_functions import CommonGUIFunctions
 from gui.gui_functions import GUIFunctions
 
 

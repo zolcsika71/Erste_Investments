@@ -1,4 +1,3 @@
-#file: noinspection SpellCheckingInspection
 # .github/workflows/ci.yml
 name: CI
 
@@ -29,19 +28,8 @@ jobs:
     - name: Install dependencies
       run: poetry install
 
-    - # noinspection SpellCheckingInspection
-      name: Set PYTHONPATH
+    - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
     - name: Run tests
       run: poetry run pytest
-  qodana:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@v2024.1
-        env:
-          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
